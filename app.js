@@ -45,6 +45,15 @@ app.post(
   })
 );
 
+app.get('/log-out', (req, res, next) => {
+  req.logout((err) => {
+    if (err) {
+      return next(err);
+    }
+    res.redirect('/');
+  });
+});
+
 passport.use(
   new LocalStrategy(async (username, password, done) => {
     try {

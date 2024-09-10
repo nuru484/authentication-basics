@@ -7,7 +7,10 @@ const passport = require('passport');
 const LocalStrategy = require('passport-local').Strategy;
 
 const pool = new Pool({
-  // add your configuration
+  connectionString: process.env.DATABASE_URL,
+  ssl: {
+    rejectUnauthorized: false,
+  },
 });
 
 const app = express();
